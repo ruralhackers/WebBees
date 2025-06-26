@@ -1,73 +1,60 @@
-# Welcome to your Lovable project
+Got it. Here’s a more technical, developer-friendly version of the README-style intro — focused on the stack, structure, and intent of the project — without marketing fluff:
 
-## Project info
+⸻
 
-**URL**: https://lovable.dev/projects/e514513c-45f3-4331-93b2-17c326d3b790
+🐝 Beautiful Bees — Web Experience by Rural Hackers
 
-## How can I edit this code?
+This is the production site for Beautiful Bees, a multi-phase rural empowerment program targeting women aged 18–29. Built by Rural Hackers, the site is designed as an interactive storytelling experience, blending modular React architecture with playful UX patterns.
 
-There are several ways of editing your application.
+Each section represents a “flower” (project phase), and scroll interaction is represented through a sticky animated bee — highlighting the project’s symbolic approach to peer-based learning and community care.
 
-**Use Lovable**
+⸻
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e514513c-45f3-4331-93b2-17c326d3b790) and start prompting.
+🔧 Stack Overview
+	•	Vite — Fast dev server + optimized build pipeline
+	•	React (TypeScript) — Component-based architecture
+	•	Tailwind CSS — Utility-first styling
+	•	shadcn/ui — Headless UI primitives for accessible components
+	•	Custom scroll interaction — Animated bee component tied to scroll position
+	•	IntersectionObserver — Section-level animations triggered on viewport entry
 
-Changes made via Lovable will be committed automatically to this repo.
+⸻
 
-**Use your preferred IDE**
+🗂 Folder Structure
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+/src
+  ├── main.tsx             # Entry point
+  ├── App.tsx              # Layout and section composition
+  ├── index.css            # Tailwind and global styles
+  └── components/
+        BeeTracker.tsx         # Sticky bee scroll animation
+        PollinatedFlower.tsx   # Animated sections (appear on scroll)
+        HeroSection.tsx
+        JourneySection.tsx
+        CTASection.tsx
+        ...
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
+⸻
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+🧪 Running Locally
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+git clone https://github.com/ruralhackers/bee-bloom-journey.git
+cd bee-bloom-journey
+npm install
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+Local dev will run on http://localhost:5173 by default.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+⸻
 
-**Use GitHub Codespaces**
+🚀 Deploy
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Production deployment can be handled via:
+	•	Vercel
+	•	Netlify
+	•	Static hosting (after npm run build)
 
-## What technologies are used for this project?
+⸻
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/e514513c-45f3-4331-93b2-17c326d3b790) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Want help integrating CMS, internationalization, or turning this into a PWA? Contributions and forks welcome.

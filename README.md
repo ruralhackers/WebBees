@@ -1,6 +1,4 @@
-Got it. Here’s a more technical, developer-friendly version of the README-style intro — focused on the stack, structure, and intent of the project — without marketing fluff:
 
-⸻
 
 🐝 Beautiful Bees — Web Experience by Rural Hackers
 

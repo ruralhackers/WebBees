@@ -5,6 +5,7 @@ import JourneySection from "@/components/JourneySection";
 import TargetSection from "@/components/TargetSection";
 import CTASection from "@/components/CTASection";
 import FooterSection from "@/components/FooterSection";
+import AudioControl from "@/components/AudioControl";
 
 const Index = () => {
   return (
@@ -15,6 +16,7 @@ const Index = () => {
       <TargetSection />
       <CTASection />
       <FooterSection />
+      <AudioControl />
     </div>
   );
 };

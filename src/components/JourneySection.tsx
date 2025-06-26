@@ -1,5 +1,6 @@
 
-import { Card, CardContent } from "@/components/ui/card";
+import InteractiveCard from "@/components/InteractiveCard";
+import { CardContent } from "@/components/ui/card";
 
 const JourneySection = () => {
   const phases = [
@@ -43,7 +44,7 @@ const JourneySection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {phases.map((phase, index) => (
-            <Card 
+            <InteractiveCard 
               key={index} 
               className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white/80 backdrop-blur-sm border-honey-200 animate-fade-in"
               style={{animationDelay: `${0.1 * (index + 1)}s`}}
@@ -59,7 +60,7 @@ const JourneySection = () => {
                   {phase.description}
                 </p>
               </CardContent>
-            </Card>
+            </InteractiveCard>
           ))}
         </div>
         

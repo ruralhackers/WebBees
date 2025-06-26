@@ -1,5 +1,5 @@
 
-import { Button } from "@/components/ui/button";
+import InteractiveButton from "@/components/InteractiveButton";
 
 const CTASection = () => {
   return (
@@ -24,12 +24,12 @@ const CTASection = () => {
           </div>
           
           <div className="animate-fade-in" style={{animationDelay: '0.4s'}}>
-            <Button 
+            <InteractiveButton 
               size="lg" 
               className="bg-gradient-to-r from-honey-500 to-honey-600 hover:from-honey-600 hover:to-honey-700 text-honey-900 font-bold px-12 py-6 text-xl rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border-2 border-honey-300"
             >
               👉 QUIERO UNIRME
-            </Button>
+            </InteractiveButton>
           </div>
           
           {/* Encouraging Message */}

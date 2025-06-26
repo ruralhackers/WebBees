@@ -1,5 +1,5 @@
 
-import { Button } from "@/components/ui/button";
+import InteractiveButton from "@/components/InteractiveButton";
 
 const HeroSection = () => {
   return (
@@ -33,12 +33,12 @@ const HeroSection = () => {
         </div>
         
         <div className="animate-fade-in" style={{animationDelay: '0.6s'}}>
-          <Button 
+          <InteractiveButton 
             size="lg" 
             className="bg-honey-500 hover:bg-honey-600 text-honey-900 font-semibold px-8 py-4 text-lg rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
           >
             👉 ÚNETE AL ENJAMBRE
-          </Button>
+          </InteractiveButton>
         </div>
       </div>
       

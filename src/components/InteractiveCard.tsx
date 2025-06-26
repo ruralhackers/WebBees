@@ -1,9 +1,10 @@
 
-import { Card, CardProps } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { useAmbientAudio } from '@/hooks/useAmbientAudio';
 import { forwardRef } from 'react';
+import { cn } from "@/lib/utils";
 
-interface InteractiveCardProps extends CardProps {
+interface InteractiveCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
@@ -19,7 +20,7 @@ const InteractiveCard = forwardRef<HTMLDivElement, InteractiveCardProps>(
     return (
       <Card
         ref={ref}
-        className={className}
+        className={cn(className)}
         onMouseEnter={handleMouseEnter}
         {...props}
       >

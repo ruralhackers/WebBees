@@ -1,24 +1,22 @@
 
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
-import ScrollytellingSections from "@/components/ScrollytellingSections";
+import JourneySection from "@/components/JourneySection";
 import TargetSection from "@/components/TargetSection";
 import CTASection from "@/components/CTASection";
 import FooterSection from "@/components/FooterSection";
-import CustomCursor from "@/components/CustomCursor";
-import ScrollProgress from "@/components/ScrollProgress";
+import AudioControl from "@/components/AudioControl";
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative">
-      <CustomCursor />
-      <ScrollProgress />
+    <div className="min-h-screen">
       <HeroSection />
       <AboutSection />
-      <ScrollytellingSections />
+      <JourneySection />
       <TargetSection />
       <CTASection />
       <FooterSection />
+      <AudioControl />
     </div>
   );
 };

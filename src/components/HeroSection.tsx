@@ -1,28 +1,16 @@
 
 import InteractiveButton from "@/components/InteractiveButton";
-import InteractiveGarden from "@/components/InteractiveGarden";
-import { useKineticText } from "@/hooks/useKineticText";
 
 const HeroSection = () => {
-  const titleRef = useKineticText('80%');
-  const subtitleRef = useKineticText('70%');
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Interactive Garden Background */}
-      <InteractiveGarden />
+      {/* Background Pattern */}
+      <div className="absolute inset-0 honeycomb-pattern opacity-30"></div>
       
-      {/* Mesh Gradient Background */}
-      <div className="absolute inset-0 opacity-40">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-honey-200/30 via-lavender-200/20 to-sage-200/30 animate-pulse"></div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-honey-300/20 rounded-full filter blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-lavender-300/20 rounded-full filter blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
-      </div>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-cream-50 via-honey-50 to-lavender-50"></div>
       
-      {/* Honeycomb Pattern */}
-      <div className="absolute inset-0 honeycomb-pattern opacity-20"></div>
-      
-      {/* Floating Particles */}
+      {/* Floating Elements */}
       <div className="absolute top-20 left-10 w-20 h-20 bg-honey-200 rounded-full opacity-20 animate-float"></div>
       <div className="absolute top-40 right-20 w-16 h-16 bg-lavender-200 rounded-full opacity-20 animate-float" style={{animationDelay: '1s'}}></div>
       <div className="absolute bottom-40 left-20 w-12 h-12 bg-sage-200 rounded-full opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
@@ -30,16 +18,10 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
         <div className="mb-8 animate-fade-in">
-          <h1 
-            ref={titleRef}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold gradient-text mb-6 cursor-pointer"
-          >
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold gradient-text mb-6">
             🌼 Beautiful Bees
           </h1>
-          <p 
-            ref={subtitleRef}
-            className="text-xl md:text-2xl lg:text-3xl text-sage-700 font-playfair font-medium max-w-3xl mx-auto leading-relaxed"
-          >
+          <p className="text-xl md:text-2xl lg:text-3xl text-sage-700 font-playfair font-medium max-w-3xl mx-auto leading-relaxed">
             Una comunidad para mujeres que quieren florecer en el rural
           </p>
         </div>
@@ -53,7 +35,7 @@ const HeroSection = () => {
         <div className="animate-fade-in" style={{animationDelay: '0.6s'}}>
           <InteractiveButton 
             size="lg" 
-            className="bg-honey-500 hover:bg-honey-600 text-honey-900 font-semibold px-8 py-4 text-lg rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:rotate-1"
+            className="bg-honey-500 hover:bg-honey-600 text-honey-900 font-semibold px-8 py-4 text-lg rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
           >
             👉 ÚNETE AL ENJAMBRE
           </InteractiveButton>

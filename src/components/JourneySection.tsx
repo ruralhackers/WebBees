@@ -20,13 +20,13 @@ const JourneySection = () => {
       dateKey: "phase2Date"
     },
     {
-      icon: "🌍",
+      icon: "💛",
       titleKey: "phase3Title",
       descriptionKey: "phase3Description",
       dateKey: "phase3Date"
     },
     {
-      icon: "💛",
+      icon: "🌍",
       titleKey: "phase4Title",
       descriptionKey: "phase4Description",
       dateKey: "phase4Date"

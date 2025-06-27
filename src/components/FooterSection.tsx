@@ -30,7 +30,7 @@ const FooterSection = () => {
               />
               <div>
                 <p className="text-xl font-bold text-cream-50">Rural Hackers</p>
-                <p className="text-sage-300 text-sm">Creando futuro en el rural</p>
+                <p className="text-sage-300 text-sm">Creando futuro no rural</p>
               </div>
             </div>
           </div>
@@ -67,14 +67,13 @@ const FooterSection = () => {
         
         {/* EU Credits */}
         <div className="border-t border-sage-700 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-center md:text-left">
-              <p className="text-sage-300 text-sm">
-                {t('footerEuCredit')}
-              </p>
-              <p className="text-sage-400 text-xs mt-1">
-                {t('footerProgram')}
-              </p>
+          <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0">
+            <div className="text-center">
+              <img 
+                src="/lovable-uploads/d3768969-85c7-4a4c-a624-e976fbebcdc7.png" 
+                alt="Logos de financiación" 
+                className="max-h-16 w-auto mx-auto"
+              />
             </div>
           </div>
         </div>
@@ -88,7 +87,7 @@ const FooterSection = () => {
             {t('footerMoreInfo')}
           </Link>
           <p className="text-sage-400 text-sm">
-            {t('footerCopyright')}
+            © 2025 Beautiful Bees. Todos os dereitos reservados.
           </p>
         </div>
       </div>

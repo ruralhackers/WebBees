@@ -22,7 +22,7 @@ const HeroSection = () => {
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
         <div className="mb-8 animate-fade-in">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold gradient-text mb-6">
-            {t('heroTitle')}
+            🌼 {t('heroTitle')}
           </h1>
           <p className="text-xl md:text-2xl lg:text-3xl text-sage-700 font-playfair font-medium max-w-3xl mx-auto leading-relaxed">
             {t('heroSubtitle')}

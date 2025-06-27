@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'gl' | 'es' | 'en' | 'it' | 'lt';
@@ -59,7 +58,7 @@ const translations = {
     ctaSubtext: "A natureza ensínanos que todo medra mellor en comunidade",
     
     // Footer
-    footerDescription: "Unha comunidade para mulleres que queren florecer no rural, creando conexións reais e proxectos con impacto.",
+    footerDescription: "Unha comunidade para mulleres que queren florecer no rural",
     footerPoweredBy: "Impulsado por",
     footerContact: "Contacto",
     footerEuCredit: "Proxecto financiado por:",
@@ -116,7 +115,7 @@ const translations = {
     ctaSubtext: "La naturaleza nos enseña que todo crece mejor en comunidad",
     
     // Footer
-    footerDescription: "Una comunidad para mujeres que quieren florecer en el rural, creando conexiones reales y proyectos con impacto.",
+    footerDescription: "Una comunidad para mujeres que quieren florecer en el rural",
     footerPoweredBy: "Impulsado por",
     footerContact: "Contacto",
     footerEuCredit: "Proyecto financiado por:",
@@ -173,7 +172,7 @@ const translations = {
     ctaSubtext: "Nature teaches us that everything grows better in community",
     
     // Footer
-    footerDescription: "A community for women who want to flourish in rural areas, creating real connections and impactful projects.",
+    footerDescription: "A community for women who want to flourish in rural areas",
     footerPoweredBy: "Powered by",
     footerContact: "Contact",
     footerEuCredit: "Project funded by:",
@@ -230,7 +229,7 @@ const translations = {
     ctaSubtext: "La natura ci insegna che tutto cresce meglio in comunità",
     
     // Footer
-    footerDescription: "Una comunità per donne che vogliono fiorire nelle zone rurali, creando connessioni reali e progetti di impatto.",
+    footerDescription: "Una comunità per donne che vogliono fiorire nelle zone rurali",
     footerPoweredBy: "Sostenuto da",
     footerContact: "Contatto",
     footerEuCredit: "Progetto finanziato da:",
@@ -287,7 +286,7 @@ const translations = {
     ctaSubtext: "Gamta moko mus, kad viskas geriau auga bendruomenėje",
     
     // Footer
-    footerDescription: "Bendruomenė moterims, kurios nori klestėti kaimo vietovėse, kurdamos tikrus ryšius ir poveikį darančius projektus.",
+    footerDescription: "Bendruomenė moterims, kurios nori klestėti kaimo vietovėse",
     footerPoweredBy: "Remia",
     footerContact: "Kontaktai",
     footerEuCredit: "Projektą finansuoja:",

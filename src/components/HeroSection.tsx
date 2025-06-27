@@ -1,7 +1,10 @@
 
 import InteractiveButton from "@/components/InteractiveButton";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Pattern */}
@@ -19,16 +22,16 @@ const HeroSection = () => {
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
         <div className="mb-8 animate-fade-in">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold gradient-text mb-6">
-            🌼 Beautiful Bees
+            {t('heroTitle')}
           </h1>
           <p className="text-xl md:text-2xl lg:text-3xl text-sage-700 font-playfair font-medium max-w-3xl mx-auto leading-relaxed">
-            Una comunidad para mujeres que quieren florecer en el rural
+            {t('heroSubtitle')}
           </p>
         </div>
         
         <div className="mb-12 animate-fade-in" style={{animationDelay: '0.3s'}}>
           <p className="text-lg md:text-xl text-sage-600 max-w-2xl mx-auto leading-relaxed">
-            Un viaje compartido para reconectar contigo misma, con la naturaleza y con otras mujeres que están creando vida en sus pueblos.
+            {t('heroDescription')}
           </p>
         </div>
         
@@ -37,7 +40,7 @@ const HeroSection = () => {
             size="lg" 
             className="bg-honey-500 hover:bg-honey-600 text-honey-900 font-semibold px-8 py-4 text-lg rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
           >
-            👉 ÚNETE AL ENJAMBRE
+            {t('heroButton')}
           </InteractiveButton>
         </div>
       </div>

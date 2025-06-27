@@ -1,28 +1,31 @@
 
 import InteractiveCard from "@/components/InteractiveCard";
 import { CardContent } from "@/components/ui/card";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const JourneySection = () => {
+  const { t } = useLanguage();
+
   const phases = [
     {
       icon: "🌱",
-      title: "Inspiración",
-      description: "Conecta con personas y experiencias fascinantes. Conoce nuevas formas de emprender, crear o simplemente reconectar contigo. Aquí se enciende la chispa."
+      titleKey: "phase1Title",
+      descriptionKey: "phase1Description"
     },
     {
       icon: "🏡",
-      title: "Coliving en Anceu Coliving",
-      description: "Vive una experiencia inmersiva en plena naturaleza gallega, rodeada de otras mujeres como tú. Aquí se cocina la transformación: entre caminatas, conversaciones honestas y proyectos compartidos. Un espacio seguro donde tu historia importa."
+      titleKey: "phase2Title",
+      descriptionKey: "phase2Description"
     },
     {
       icon: "🌍",
-      title: "Bootcamp Internacional",
-      description: "Comparte y crece junto a mujeres y facilitadoras de España, Italia y Lituania. Aprende en red, conecta con ideas nuevas y lleva tu proyecto más allá de tu pueblo. Aquí se abren las alas."
+      titleKey: "phase3Title",
+      descriptionKey: "phase3Description"
     },
     {
       icon: "💛",
-      title: "Fase de Solidaridad",
-      description: "Como las abejas que cuidan su colmena, aquí se cuida la comunidad. Cada participante impulsa una acción para devolver al territorio parte del cariño recibido. Aquí florece el compromiso."
+      titleKey: "phase4Title",
+      descriptionKey: "phase4Description"
     }
   ];
 
@@ -31,13 +34,13 @@ const JourneySection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-sage-800 mb-8 animate-fade-in">
-            🐝 Las Fases del Viaje
+            {t('journeyTitle')}
           </h2>
           <p className="text-lg md:text-xl text-sage-700 max-w-3xl mx-auto leading-relaxed animate-fade-in" style={{animationDelay: '0.2s'}}>
-            Como las abejas, vivimos en red. Nos nutrimos unas a otras. Creamos y cuidamos juntas.
+            {t('journeyDescription')}
             <br />
             <span className="font-playfair font-medium text-honey-600 text-xl md:text-2xl">
-              Estas son las estaciones de nuestro vuelo:
+              {t('journeySubtitle')}
             </span>
           </p>
         </div>
@@ -54,10 +57,10 @@ const JourneySection = () => {
                   {phase.icon}
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-sage-800 mb-4 font-playfair">
-                  {phase.title}
+                  {t(phase.titleKey)}
                 </h3>
                 <p className="text-sage-600 leading-relaxed text-lg">
-                  {phase.description}
+                  {t(phase.descriptionKey)}
                 </p>
               </CardContent>
             </InteractiveCard>

@@ -40,7 +40,7 @@ const FooterSection = () => {
             <h4 className="text-lg font-semibold mb-4 text-honey-300">{t('footerContact')}</h4>
             <div className="space-y-2 text-sage-200 mb-6">
               <p>📧 hello@ruralhackers.com</p>
-              <p>🌐 beautifulbees.eu</p>
+              <p>🌐 www.ruralhackers.com</p>
             </div>
             
             {/* Social Media */}

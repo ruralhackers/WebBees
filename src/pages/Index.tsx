@@ -6,13 +6,11 @@ import TargetSection from "@/components/TargetSection";
 import CTASection from "@/components/CTASection";
 import FooterSection from "@/components/FooterSection";
 import LanguageSelector from "@/components/LanguageSelector";
-import BeeScrollProgress from "@/components/BeeScrollProgress";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <LanguageSelector />
-      <BeeScrollProgress />
       <HeroSection />
       <AboutSection />
       <JourneySection />

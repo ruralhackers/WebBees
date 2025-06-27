@@ -1,5 +1,5 @@
 
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'gl' | 'es' | 'en' | 'it' | 'lt';
 
@@ -9,291 +9,305 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
 const translations = {
   gl: {
     // Hero Section
-    heroTitle: '🌼 Beautiful Bees',
-    heroSubtitle: 'Unha comunidade para mulleres que queren florecer no rural',
-    heroDescription: 'Unha viaxe compartida para reconectar contigo mesma, coa natureza e con outras mulleres que están creando vida nos seus pobos.',
-    heroButton: '👉 UNIRSE AO ENXAME',
+    heroTitle: "Beautiful Bees",
+    heroSubtitle: "Unha comunidade para mulleres que queren florecer",
+    heroDescription: "Unha viaxe compartida para reconectar contigo mesma, coa natureza e con outras mulleres",
+    heroButton: "Unirse ao enxambre",
     
     // About Section
-    aboutTitle: '🌸 Que é Beautiful Bees?',
-    aboutDescription1: 'Beautiful Bees é unha experiencia europea pensada para mulleres novas que queren vivir con propósito, rodeadas de natureza e comunidade.',
-    aboutHighlight: 'Aquí floreces ti. E florecen todas contigo.',
-    aboutDescription2: 'Un espazo onde se cultiva a sororidade, a inspiración e o amor polo territorio.',
+    aboutTitle: "Por que Beautiful Bees?",
+    aboutDescription1: "Porque as abellas son o símbolo perfecto da cooperación, da creatividade e da transformación. Como elas, as mulleres rurais somos polinizadoras: levamos ideas, conectamos persoas e facemos que florezan os proxectos nos nosos territorios.",
+    aboutHighlight: "Xuntas, creamos comunidade. Xuntas, facemos que todo medre.",
+    aboutDescription2: "Este programa está deseñado para mulleres que queren emprender, crear ou simplemente reconectar consigo mesmas. Non importa se tes unha idea clara ou se aínda estás explorando: aquí tes espazo para descubrir, aprender e crear xunto a outras mulleres que comparten os teus valores.",
     
     // Journey Section
-    journeyTitle: '🐝 As Fases da Viaxe',
-    journeyDescription: 'Como as abellas, vivimos en rede. Nutrímonos unhas ás outras. Creamos e coidamos xuntas.',
-    journeySubtitle: 'Estas son as estacións do noso voo:',
+    journeyTitle: "As Fases do Teu Voo",
+    journeyDescription: "Como as abellas, farás un percorrido transformador que te levará desde a inspiración ata a acción.",
+    journeySubtitle: "Catro momentos únicos para medrar xuntas",
     
-    // Journey Phases
-    phase1Title: 'Inspiración',
-    phase1Description: 'Conecta con persoas e experiencias fascinantes. Coñece novas formas de emprender, crear ou simplemente reconectar contigo. Aquí acéndese a chispa.',
+    // New phase content
+    phase1Title: "Inspírate",
+    phase1Description: "Conecta con outras mulleres e experiencias transformadoras. Descubre novas formas de emprender, crear e reconectar contigo mesma. A través de sesións online de 3 horas semanais, medra nun espazo seguro e compartido no que poderás explorar o teu potencial persoal e profesional, acompañada por unha comunidade que suma.",
+    phase1Date: "📅 24 de setembro – 10 de decembro de 2025",
     
-    phase2Title: 'Coliving en Anceu Coliving',
-    phase2Description: 'Vive unha experiencia inmersiva en plena natureza galega, rodeada doutras mulleres como ti. Aquí cóceseose a transformación: entre camiñadas, conversas honestas e proxectos compartidos. Un espazo seguro onde a túa historia importa.',
+    phase2Title: "Convive",
+    phase2Description: "Vive unha experiencia inmersiva en plena natureza galega, rodeada doutras mulleres coma ti. Aquí cócese a transformación: entre camiñadas, conversas e proxectos compartidos. Unha semana gratuíta con todo incluído nalgún dos dous espazos: Anceu Coliving ou A Loba.",
+    phase2Date: "📅 Do 4 ao 9 de novembro de 2025",
     
-    phase3Title: 'Bootcamp Internacional',
-    phase3Description: 'Comparte e medra xunto a mulleres e facilitadoras de España, Italia e Lituania. Conecta online con outras mulleres que son bees neses países. Aprende en rede, conecta con ideas novas e leva o teu proxecto máis alá do teu pobo. Aquí ábrense as ás.',
+    phase3Title: "Fase de solidariedade",
+    phase3Description: "Como as abellas que coidan da súa colmea, aquí cóidase a comunidade. Cada participante impulsa unha acción para devolver ao territorio parte do agarimo recibido. Aquí florece o compromiso. Sesións online de 3 horas semanais para deseñar proxectos con impacto no teu territorio.",
+    phase3Date: "📅 Do 28 de xaneiro ao 25 de febreiro de 2026",
     
-    phase4Title: 'Fase de Solidaridade',
-    phase4Description: 'Como as abellas que coidan a súa colmea, aquí cóidase a comunidade. Cada participante impulsa unha acción para devolver ao territorio parte do cariño recibido. Aquí florece o compromiso.',
+    phase4Title: "Bootcamp internacional",
+    phase4Description: "Comparte e medra xunto a mulleres e facilitadoras de España, Italia e Lituania. Aprende en rede, descubre novas ideas e leva o teu proxecto máis alá. Aquí ábrense as ás. 3 días de estancia en Lituania no mes de abril.",
+    phase4Date: "📅 3 días en abril de 2026",
     
     // Target Section
-    targetTitle: '👩‍🌾 Para quen é?',
-    targetDescription1: 'Para mulleres de 18 a 29 anos con ganas de crecer, crear, compartir e sentir que hai outros camiños posibles.',
-    targetHighlight: 'Se levas tempo escoitando esa voceciña interior que che pide cambio…',
-    targetConclusion: 'Este proxecto é para ti.',
+    targetTitle: "Para Quen é Este Programa?",
+    targetDescription1: "Beautiful Bees está pensado para mulleres que viven no rural ou que senten conexión cos valores rurais: a cooperación, a sostibilidade, o respecto pola natureza e a vida en comunidade.",
+    targetHighlight: "Se tes ganas de crear, emprender ou simplemente reconectar contigo mesma...",
+    targetConclusion: "Este é o teu lugar. Aquí tes espazo para medrar.",
     
     // CTA Section
-    ctaTitle: '🌼 Fai florecer o teu camiño con Beautiful Bees',
-    ctaDescription: 'A comunidade xa está zumbando… só faltas ti.',
-    ctaButton: '👉 QUERO UNIRME',
-    ctaSubtext: '✨ O cambio que buscas está a un clic de distancia ✨',
-    ctaFree: '🎁 Programa totalmente gratuíto',
+    ctaTitle: "Prepárate para Volar",
+    ctaDescription: "Únete a nós nesta aventura de crecemento, conexión e transformación. Xuntas, podemos crear algo fermoso.",
+    ctaButton: "Quero unirme",
+    ctaFree: "🎁 Programa totalmente gratuíto (24 prazas)",
+    ctaSubtext: "A natureza ensínanos que todo medra mellor en comunidade",
     
     // Footer
-    footerDescription: 'Unha experiencia europea para mulleres que queren florecer no rural.',
-    footerPoweredBy: 'Impulsado por',
-    footerContact: 'Contacto',
-    footerLanguage: 'Idioma:',
-    footerEuCredit: '🇪🇺 Proxecto financiado pola Unión Europea',
-    footerProgram: 'EOI (Escola de Organización Industrial) e Cámara de Comercio de Santiago',
-    footerCopyright: '© 2025 Beautiful Bees - Rural Hackers. Feito con 💛 para as mulleres do rural.',
-    footerMoreInfo: 'Máis información',
-    
-    // More Info Page
-    moreInfoTitle: 'Máis información sobre Beautiful Bees',
-    moreInfoIntro: 'O programa Beautiful Bees: Polinizadoras Rurais constrúese como unha experiencia transformadora que une a mulleres, territorios e saberes nun proceso de aprendizaxe profundo e colectivo. Máis que unha formación, é unha proposta viva de rexeneración: persoal, profesional e comunitaria.',
-    moreInfoPillar1Title: 'Pensamento baseado na natureza (nature-based thinking)',
-    moreInfoPillar1Description: 'aprender do territorio e co territorio. Comprender os seus ciclos, a súa resistencia e as súas formas de cooperación para aplicalas aos nosos propios procesos vitais e profesionais. Por iso o programa celébrase no rural: é na natureza onde estas ensinanzas teñen máis sentido e potencia.',
-    moreInfoPillar2Title: 'Pensamento centrado no ser (being-based thinking)',
-    moreInfoPillar2Description: 'cultivar a conciencia, o equilibrio e o propósito. Poñer no centro o benestar, a intuición, o autocoñecemento e a escoita para liderar con sentido.',
-    moreInfoPillar3Title: 'Pensamento baseado na conexión (connecting-based thinking)',
-    moreInfoPillar3Description: 'xerar redes reais. Fomentar os vínculos entre mulleres, entre xeracións, entre pobos. Conectar mundos, profesións, saberes e culturas para construír algo máis grande que o individual.',
-    moreInfoConclusion: 'Esta filosofía materialízase nun percorrido con tres etapas: inspiración (Inspiration), co-living colaborativo e retorno ao territorio (Give Back). Cada unha está deseñada para deixar pegada nas participantes e no contorno.',
-    moreInfoLocation: 'As actividades desenvólvense en dúas aldeas galegas: Anceu e Fornelos de Montes, que se entrelazan conectadas polas mesmas abellas. Porque por iso somos tamén Polinizadoras Rurais: abellas polinizando ideas, sementando vínculos, xerando comunidade.',
+    footerDescription: "Unha comunidade para mulleres que queren florecer no rural, creando conexións reais e proxectos con impacto.",
+    footerPoweredBy: "Impulsado por",
+    footerContact: "Contacto",
+    footerEuCredit: "Proxecto financiado por:",
+    footerProgram: "EOI (Escuela de Organización Industrial) e Cámara de Comercio de Santiago",
+    footerMoreInfo: "Máis información",
+    footerCopyright: "© 2025 Beautiful Bees. Todos os dereitos reservados.",
   },
   es: {
-    // Mantener las traducciones existentes en español
-    heroTitle: '🌼 Beautiful Bees',
-    heroSubtitle: 'Una comunidad para mujeres que quieren florecer en el rural',
-    heroDescription: 'Un viaje compartido para reconectar contigo misma, con la naturaleza y con otras mujeres que están creando vida en sus pueblos.',
-    heroButton: '👉 ÚNETE AL ENJAMBRE',
-    aboutTitle: '🌸 ¿Qué es Beautiful Bees?',
-    aboutDescription1: 'Beautiful Bees es una experiencia europea pensada para mujeres jóvenes que quieren vivir con propósito, rodeadas de naturaleza y comunidad.',
-    aboutHighlight: 'Aquí floreces tú. Y florecen todas contigo.',
-    aboutDescription2: 'Un espacio donde se cultiva la sororidad, la inspiración y el amor por el territorio.',
-    journeyTitle: '🐝 Las Fases del Viaje',
-    journeyDescription: 'Como las abejas, vivimos en red. Nos nutrimos unas a otras. Creamos y cuidamos juntas.',
-    journeySubtitle: 'Estas son las estaciones de nuestro vuelo:',
-    phase1Title: 'Inspiración',
-    phase1Description: 'Conecta con personas y experiencias fascinantes. Conoce nuevas formas de emprender, crear o simplemente reconectar contigo. Aquí se enciende la chispa.',
-    phase2Title: 'Coliving en Anceu Coliving',
-    phase2Description: 'Vive una experiencia inmersiva en plena naturaleza gallega, rodeada de otras mujeres como tú. Aquí se cocina la transformación: entre caminatas, conversaciones honestas y proyectos compartidos. Un espacio seguro donde tu historia importa.',
-    phase3Title: 'Bootcamp Internacional',
-    phase3Description: 'Comparte y crece junto a mujeres y facilitadoras de España, Italia y Lituania. Conecta online con otras mujeres que son bees en esos países. Aprende en red, conecta con ideas nuevas y lleva tu proyecto más allá de tu pueblo. Aquí se abren las alas.',
-    phase4Title: 'Fase de Solidaridad',
-    phase4Description: 'Como las abejas que cuidan su colmena, aquí se cuida la comunidad. Cada participante impulsa una acción para devolver al territorio parte del cariño recibido. Aquí florece el compromiso.',
-    targetTitle: '👩‍🌾 ¿Para quién es?',
-    targetDescription1: 'Para mujeres de 18 a 29 años con ganas de crecer, crear, compartir y sentir que hay otros caminos posibles.',
-    targetHighlight: 'Si llevas tiempo escuchando esa vocecita interior que te pide cambio…',
-    targetConclusion: 'Este proyecto es para ti.',
-    ctaTitle: '🌼 Haz florecer tu camino con Beautiful Bees',
-    ctaDescription: 'La comunidad ya está zumbando… solo faltas tú.',
-    ctaButton: '👉 QUIERO UNIRME',
-    ctaSubtext: '✨ El cambio que buscas está a un clic de distancia ✨',
-    ctaFree: '🎁 Programa totalmente gratuito',
-    footerDescription: 'Una experiencia europea para mujeres que quieren florecer en el rural.',
-    footerPoweredBy: 'Impulsado por',
-    footerContact: 'Contacto',
-    footerLanguage: 'Idioma:',
-    footerEuCredit: '🇪🇺 Proyecto financiado por la Unión Europea',
-    footerProgram: 'EOI (Escuela de Organización Industrial) y Cámara de Comercio de Santiago',
-    footerCopyright: '© 2025 Beautiful Bees - Rural Hackers. Hecho con 💛 para las mujeres del rural.',
-    footerMoreInfo: 'Más información',
-    moreInfoTitle: 'Más información sobre Beautiful Bees',
-    moreInfoIntro: 'El programa Beautiful Bees: Polinizadoras Rurales se construye como una experiencia transformadora que une a mujeres, territorios y saberes en un proceso de aprendizaje profundo y colectivo. Más que una formación, es una propuesta viva de regeneración: personal, profesional y comunitaria.',
-    moreInfoPillar1Title: 'Pensamiento basado en la naturaleza (nature-based thinking)',
-    moreInfoPillar1Description: 'aprender del territorio y con el territorio. Comprender sus ciclos, su resiliencia y sus formas de cooperación para aplicarlas a nuestros propios procesos vitales y profesionales. Por eso el programa se celebra en el rural: es en la naturaleza donde estas enseñanzas tienen más sentido y potencia.',
-    moreInfoPillar2Title: 'Pensamiento centrado en el ser (being-based thinking)',
-    moreInfoPillar2Description: 'cultivar la conciencia, el equilibrio y el propósito. Poner en el centro el bienestar, la intuición, el autoconocimiento y la escucha para liderar con sentido.',
-    moreInfoPillar3Title: 'Pensamiento basado en la conexión (connecting-based thinking)',
-    moreInfoPillar3Description: 'generar redes reales. Fomentar los vínculos entre mujeres, entre generaciones, entre pueblos. Conectar mundos, profesiones, saberes y culturas para construir algo más grande que lo individual.',
-    moreInfoConclusion: 'Esta filosofía se materializa en un recorrido con tres etapas: inspiración (Inspiration), co-living colaborativo y retorno al territorio (Give Back). Cada una está diseñada para dejar huella en las participantes y en el entorno.',
-    moreInfoLocation: 'Las actividades se desarrollan en dos aldeas gallegas: Anceu y Fornelos de Montes, que se entrelazan conectadas por las mismas abejas. Porque por eso somos también Polinizadoras Rurales: abejas polinizando ideas, sembrando vínculos, generando comunidad.',
+    // Hero Section
+    heroTitle: "Beautiful Bees",
+    heroSubtitle: "Una comunidad para mujeres que quieren florecer",
+    heroDescription: "Un viaje compartido para reconectar contigo misma, con la naturaleza y con otras mujeres",
+    heroButton: "Unirse al enjambre",
+    
+    // About Section
+    aboutTitle: "¿Por qué Beautiful Bees?",
+    aboutDescription1: "Porque las abejas son el símbolo perfecto de la cooperación, la creatividad y la transformación. Como ellas, las mujeres rurales somos polinizadoras: llevamos ideas, conectamos personas y hacemos que florezcan los proyectos en nuestros territorios.",
+    aboutHighlight: "Juntas, creamos comunidad. Juntas, hacemos que todo crezca.",
+    aboutDescription2: "Este programa está diseñado para mujeres que quieren emprender, crear o simplemente reconectar consigo mismas. No importa si tienes una idea clara o si aún estás explorando: aquí tienes espacio para descubrir, aprender y crear junto a otras mujeres que comparten tus valores.",
+    
+    // Journey Section
+    journeyTitle: "Las Fases de tu Vuelo",
+    journeyDescription: "Como las abejas, harás un recorrido transformador que te llevará desde la inspiración hasta la acción.",
+    journeySubtitle: "Cuatro momentos únicos para crecer juntas",
+    
+    // New phase content
+    phase1Title: "Inspírate",
+    phase1Description: "Conecta con otras mujeres y experiencias transformadoras. Descubre nuevas formas de emprender, crear y reconectar contigo misma. A través de sesiones online de 3 horas semanales, crece en un espacio seguro y compartido donde podrás explorar tu potencial personal y profesional, acompañada por una comunidad que suma.",
+    phase1Date: "📅 24 de septiembre – 10 de diciembre de 2025",
+    
+    phase2Title: "Convive",
+    phase2Description: "Vive una experiencia inmersiva en plena naturaleza gallega, rodeada de otras mujeres como tú. Aquí se cuece la transformación: entre caminatas, conversas y proyectos compartidos. Una semana gratuita con todo incluido en alguno de los dos espacios: Anceu Coliving o A Loba.",
+    phase2Date: "📅 Del 4 al 9 de noviembre de 2025",
+    
+    phase3Title: "Fase de solidaridad",
+    phase3Description: "Como las abejas que cuidan de su colmena, aquí se cuida la comunidad. Cada participante impulsa una acción para devolver al territorio parte del cariño recibido. Aquí florece el compromiso. Sesiones online de 3 horas semanales para diseñar proyectos con impacto en tu territorio.",
+    phase3Date: "📅 Del 28 de enero al 25 de febrero de 2026",
+    
+    phase4Title: "Bootcamp internacional",
+    phase4Description: "Comparte y crece junto a mujeres y facilitadoras de España, Italia y Lituania. Aprende en red, descubre nuevas ideas y lleva tu proyecto más allá. Aquí se abren las alas. 3 días de estancia en Lituania en el mes de abril.",
+    phase4Date: "📅 3 días en abril de 2026",
+    
+    // Target Section
+    targetTitle: "¿Para Quién es Este Programa?",
+    targetDescription1: "Beautiful Bees está pensado para mujeres que viven en el rural o que sienten conexión con los valores rurales: la cooperación, la sostenibilidad, el respeto por la naturaleza y la vida en comunidad.",
+    targetHighlight: "Si tienes ganas de crear, emprender o simplemente reconectar contigo misma...",
+    targetConclusion: "Este es tu lugar. Aquí tienes espacio para crecer.",
+    
+    // CTA Section
+    ctaTitle: "Prepárate para Volar",
+    ctaDescription: "Únete a nosotras en esta aventura de crecimiento, conexión y transformación. Juntas, podemos crear algo hermoso.",
+    ctaButton: "Quiero unirme",
+    ctaFree: "🎁 Programa totalmente gratuito (24 plazas)",
+    ctaSubtext: "La naturaleza nos enseña que todo crece mejor en comunidad",
+    
+    // Footer
+    footerDescription: "Una comunidad para mujeres que quieren florecer en el rural, creando conexiones reales y proyectos con impacto.",
+    footerPoweredBy: "Impulsado por",
+    footerContact: "Contacto",
+    footerEuCredit: "Proyecto financiado por:",
+    footerProgram: "EOI (Escuela de Organización Industrial) y Cámara de Comercio de Santiago",
+    footerMoreInfo: "Más información",
+    footerCopyright: "© 2025 Beautiful Bees. Todos los derechos reservados.",
   },
   en: {
-    heroTitle: '🌼 Beautiful Bees',
-    heroSubtitle: 'A community for women who want to flourish in rural areas',
-    heroDescription: 'A shared journey to reconnect with yourself, with nature and with other women who are creating life in their villages.',
-    heroButton: '👉 JOIN THE SWARM',
-    aboutTitle: '🌸 What is Beautiful Bees?',
-    aboutDescription1: 'Beautiful Bees is a European experience designed for young women who want to live with purpose, surrounded by nature and community.',
-    aboutHighlight: 'Here you flourish. And everyone flourishes with you.',
-    aboutDescription2: 'A space where sisterhood, inspiration and love for the territory are cultivated.',
-    journeyTitle: '🐝 The Journey Phases',
-    journeyDescription: 'Like bees, we live in networks. We nourish each other. We create and care together.',
-    journeySubtitle: 'These are the seasons of our flight:',
-    phase1Title: 'Inspiration',
-    phase1Description: 'Connect with fascinating people and experiences. Discover new ways to undertake, create or simply reconnect with yourself. Here the spark is ignited.',
-    phase2Title: 'Coliving at Anceu Coliving',
-    phase2Description: 'Live an immersive experience in the heart of Galician nature, surrounded by other women like you. Here transformation is cooked: between walks, honest conversations and shared projects. A safe space where your story matters.',
-    phase3Title: 'International Bootcamp',
-    phase3Description: 'Share and grow alongside women and facilitators from Spain, Italy and Lithuania. Connect online with other women who are bees in those countries. Learn networked, connect with new ideas and take your project beyond your village. Here wings open.',
-    phase4Title: 'Solidarity Phase',
-    phase4Description: 'Like bees that care for their hive, here the community is cared for. Each participant drives an action to give back to the territory part of the affection received. Here commitment flourishes.',
-    targetTitle: '👩‍🌾 Who is it for?',
-    targetDescription1: 'For women aged 18 to 29 with desire to grow, create, share and feel that there are other possible paths.',
-    targetHighlight: 'If you have been listening to that inner voice asking for change for a while…',
-    targetConclusion: 'This project is for you.',
-    ctaTitle: '🌼 Make your path flourish with Beautiful Bees',
-    ctaDescription: 'The community is already buzzing… you are the only one missing.',
-    ctaButton: '👉 I WANT TO JOIN',
-    ctaSubtext: '✨ The change you seek is one click away ✨',
-    ctaFree: '🎁 Completely free program',
-    footerDescription: 'A European experience for women who want to flourish in rural areas.',
-    footerPoweredBy: 'Powered by',
-    footerContact: 'Contact',
-    footerLanguage: 'Language:',
-    footerEuCredit: '🇪🇺 Project funded by the European Union',
-    footerProgram: 'EOI (Industrial Organization School) and Santiago Chamber of Commerce',
-    footerCopyright: '© 2025 Beautiful Bees - Rural Hackers. Made with 💛 for rural women.',
-    footerMoreInfo: 'More information',
-    moreInfoTitle: 'More information about Beautiful Bees',
-    moreInfoIntro: 'The Beautiful Bees: Rural Pollinators program is built as a transformative experience that brings together women, territories and knowledge in a deep and collective learning process. More than training, it is a living proposal for regeneration: personal, professional and community.',
-    moreInfoPillar1Title: 'Nature-based thinking',
-    moreInfoPillar1Description: 'learning from the territory and with the territory. Understanding its cycles, its resilience and its forms of cooperation to apply them to our own vital and professional processes. That is why the program is held in rural areas: it is in nature where these teachings make the most sense and power.',
-    moreInfoPillar2Title: 'Being-based thinking',
-    moreInfoPillar2Description: 'cultivating awareness, balance and purpose. Putting well-being, intuition, self-knowledge and listening at the center to lead with meaning.',
-    moreInfoPillar3Title: 'Connection-based thinking',
-    moreInfoPillar3Description: 'generating real networks. Fostering links between women, between generations, between villages. Connecting worlds, professions, knowledge and cultures to build something bigger than the individual.',
-    moreInfoConclusion: 'This philosophy materializes in a journey with three stages: inspiration (Inspiration), collaborative co-living and return to the territory (Give Back). Each one is designed to leave its mark on the participants and the environment.',
-    moreInfoLocation: 'The activities take place in two Galician villages: Anceu and Fornelos de Montes, which are intertwined connected by the same bees. Because that is why we are also Rural Pollinators: bees pollinating ideas, sowing links, generating community.',
+    // Hero Section
+    heroTitle: "Beautiful Bees",
+    heroSubtitle: "A community for women who want to flourish",
+    heroDescription: "A shared journey to reconnect with yourself, nature, and other women",
+    heroButton: "Join the swarm",
+    
+    // About Section
+    aboutTitle: "Why Beautiful Bees?",
+    aboutDescription1: "Because bees are the perfect symbol of cooperation, creativity and transformation. Like them, rural women are pollinators: we carry ideas, connect people and make projects flourish in our territories.",
+    aboutHighlight: "Together, we create community. Together, we make everything grow.",
+    aboutDescription2: "This program is designed for women who want to start businesses, create or simply reconnect with themselves. It doesn't matter if you have a clear idea or if you're still exploring: here you have space to discover, learn and create alongside other women who share your values.",
+    
+    // Journey Section
+    journeyTitle: "The Phases of Your Flight",
+    journeyDescription: "Like bees, you'll make a transformative journey that will take you from inspiration to action.",
+    journeySubtitle: "Four unique moments to grow together",
+    
+    // New phase content
+    phase1Title: "Get Inspired",
+    phase1Description: "Connect with other women and transformative experiences. Discover new ways to start businesses, create and reconnect with yourself. Through weekly 3-hour online sessions, grow in a safe and shared space where you can explore your personal and professional potential, accompanied by a supportive community.",
+    phase1Date: "📅 September 24 – December 10, 2025",
+    
+    phase2Title: "Live Together",
+    phase2Description: "Live an immersive experience in the heart of Galician nature, surrounded by other women like you. Here transformation is cooked: between walks, conversations and shared projects. A free week with everything included in one of two spaces: Anceu Coliving or A Loba.",
+    phase2Date: "📅 November 4-9, 2025",
+    
+    phase3Title: "Solidarity Phase",
+    phase3Description: "Like bees that take care of their hive, here the community is cared for. Each participant drives an action to give back to the territory part of the affection received. Here commitment flourishes. Weekly 3-hour online sessions to design projects with impact in your territory.",
+    phase3Date: "📅 January 28 – February 25, 2026",
+    
+    phase4Title: "International Bootcamp",
+    phase4Description: "Share and grow alongside women and facilitators from Spain, Italy and Lithuania. Learn in network, discover new ideas and take your project beyond. Here wings open. 3 days stay in Lithuania in April.",
+    phase4Date: "📅 3 days in April 2026",
+    
+    // Target Section
+    targetTitle: "Who is This Program For?",
+    targetDescription1: "Beautiful Bees is designed for women who live in rural areas or who feel connected to rural values: cooperation, sustainability, respect for nature and community life.",
+    targetHighlight: "If you want to create, start a business or simply reconnect with yourself...",
+    targetConclusion: "This is your place. Here you have space to grow.",
+    
+    // CTA Section
+    ctaTitle: "Get Ready to Fly",
+    ctaDescription: "Join us in this adventure of growth, connection and transformation. Together, we can create something beautiful.",
+    ctaButton: "I want to join",
+    ctaFree: "🎁 Completely free program (24 spots)",
+    ctaSubtext: "Nature teaches us that everything grows better in community",
+    
+    // Footer
+    footerDescription: "A community for women who want to flourish in rural areas, creating real connections and impactful projects.",
+    footerPoweredBy: "Powered by",
+    footerContact: "Contact",
+    footerEuCredit: "Project funded by:",
+    footerProgram: "EOI (Escuela de Organización Industrial) and Santiago Chamber of Commerce",
+    footerMoreInfo: "More information",
+    footerCopyright: "© 2025 Beautiful Bees. All rights reserved.",
   },
   it: {
-    heroTitle: '🌼 Beautiful Bees',
-    heroSubtitle: 'Una comunità per donne che vogliono fiorire nelle zone rurali',
-    heroDescription: 'Un viaggio condiviso per riconnettersi con se stesse, con la natura e con altre donne che stanno creando vita nei loro paesi.',
-    heroButton: '👉 UNISCITI ALLO SCIAME',
-    aboutTitle: '🌸 Che cos\'è Beautiful Bees?',
-    aboutDescription1: 'Beautiful Bees è un\'esperienza europea pensata per giovani donne che vogliono vivere con uno scopo, circondate dalla natura e dalla comunità.',
-    aboutHighlight: 'Qui fiorisci tu. E tutti fioriscono con te.',
-    aboutDescription2: 'Uno spazio dove si coltivano la sorellanza, l\'ispirazione e l\'amore per il territorio.',
-    journeyTitle: '🐝 Le Fasi del Viaggio',
-    journeyDescription: 'Come le api, viviamo in rete. Ci nutriamo l\'una dell\'altra. Creiamo e ci prendiamo cura insieme.',
-    journeySubtitle: 'Queste sono le stagioni del nostro volo:',
-    phase1Title: 'Ispirazione',
-    phase1Description: 'Connettiti con persone ed esperienze affascinanti. Scopri nuovi modi di intraprendere, creare o semplicemente riconnetterti con te stessa. Qui si accende la scintilla.',
-    phase2Title: 'Coliving ad Anceu Coliving',
-    phase2Description: 'Vivi un\'esperienza immersiva nel cuore della natura galiziana, circondata da altre donne come te. Qui si cucina la trasformazione: tra passeggiate, conversazioni oneste e progetti condivisi. Uno spazio sicuro dove la tua storia conta.',
-    phase3Title: 'Bootcamp Internazionale',
-    phase3Description: 'Condividi e cresci insieme a donne e facilitatrici di Spagna, Italia e Lituania. Connettiti online con altre donne che sono api in quei paesi. Impara in rete, connettiti con nuove idee e porta il tuo progetto oltre il tuo paese. Qui si aprono le ali.',
-    phase4Title: 'Fase di Solidarietà',
-    phase4Description: 'Come le api che si prendono cura del loro alveare, qui ci si prende cura della comunità. Ogni partecipante promuove un\'azione per restituire al territorio parte dell\'affetto ricevuto. Qui fiorisce l\'impegno.',
-    targetTitle: '👩‍🌾 Per chi è?',
-    targetDescription1: 'Per donne dai 18 ai 29 anni con voglia di crescere, creare, condividere e sentire che ci sono altri percorsi possibili.',
-    targetHighlight: 'Se da tempo ascolti quella vocina interiore che ti chiede cambiamento…',
-    targetConclusion: 'Questo progetto è per te.',
-    ctaTitle: '🌼 Fai fiorire il tuo cammino con Beautiful Bees',
-    ctaDescription: 'La comunità sta già ronzando… manchi solo tu.',
-    ctaButton: '👉 VOGLIO UNIRMI',
-    ctaSubtext: '✨ Il cambiamento che cerchi è a un clic di distanza ✨',
-    ctaFree: '🎁 Programma completamente gratuito',
-    footerDescription: 'Un\'esperienza europea per donne che vogliono fiorire nelle zone rurali.',
-    footerPoweredBy: 'Promosso da',
-    footerContact: 'Contatto',
-    footerLanguage: 'Lingua:',
-    footerEuCredit: '🇪🇺 Progetto finanziato dall\'Unione Europea',
-    footerProgram: 'EOI (Scuola di Organizzazione Industriale) e Camera di Commercio di Santiago',
-    footerCopyright: '© 2025 Beautiful Bees - Rural Hackers. Fatto con 💛 per le donne rurali.',
-    footerMoreInfo: 'Maggiori informazioni',
-    moreInfoTitle: 'Maggiori informazioni su Beautiful Bees',
-    moreInfoIntro: 'Il programma Beautiful Bees: Impollinatrici Rurali si costruisce come un\'esperienza trasformativa che unisce donne, territori e saperi in un processo di apprendimento profondo e collettivo. Più che una formazione, è una proposta viva di rigenerazione: personale, professionale e comunitaria.',
-    moreInfoPillar1Title: 'Pensiero basato sulla natura (nature-based thinking)',
-    moreInfoPillar1Description: 'imparare dal territorio e con il territorio. Comprendere i suoi cicli, la sua resilienza e le sue forme di cooperazione per applicarle ai nostri processi vitali e professionali. Per questo il programma si celebra nel rurale: è nella natura dove questi insegnamenti hanno più senso e potenza.',
-    moreInfoPillar2Title: 'Pensiero centrato sull\'essere (being-based thinking)',
-    moreInfoPillar2Description: 'coltivare la coscienza, l\'equilibrio e lo scopo. Mettere al centro il benessere, l\'intuizione, l\'autoconoscenza e l\'ascolto per guidare con senso.',
-    moreInfoPillar3Title: 'Pensiero basato sulla connessione (connecting-based thinking)',
-    moreInfoPillar3Description: 'generare reti reali. Favorire i legami tra donne, tra generazioni, tra paesi. Connettere mondi, professioni, saperi e culture per costruire qualcosa di più grande dell\'individuale.',
-    moreInfoConclusion: 'Questa filosofia si materializza in un percorso con tre tappe: ispirazione (Inspiration), co-living collaborativo e ritorno al territorio (Give Back). Ognuna è progettata per lasciare un\'impronta nelle partecipanti e nell\'ambiente.',
-    moreInfoLocation: 'Le attività si svolgono in due villaggi galiziani: Anceu e Fornelos de Montes, che si intrecciano connessi dalle stesse api. Perché per questo siamo anche Impollinatrici Rurali: api che impollinano idee, seminando legami, generando comunità.',
+    // Hero Section
+    heroTitle: "Beautiful Bees",
+    heroSubtitle: "Una comunità per donne che vogliono fiorire",
+    heroDescription: "Un viaggio condiviso per riconnettersi con se stesse, con la natura e con altre donne",
+    heroButton: "Unisciti allo sciame",
+    
+    // About Section
+    aboutTitle: "Perché Beautiful Bees?",
+    aboutDescription1: "Perché le api sono il simbolo perfetto della cooperazione, della creatività e della trasformazione. Come loro, le donne rurali siamo impollinatrici: portiamo idee, connettiamo persone e facciamo fiorire i progetti nei nostri territori.",
+    aboutHighlight: "Insieme, creiamo comunità. Insieme, facciamo crescere tutto.",
+    aboutDescription2: "Questo programma è progettato per donne che vogliono intraprendere, creare o semplicemente riconnettersi con se stesse. Non importa se hai un'idea chiara o se stai ancora esplorando: qui hai spazio per scoprire, imparare e creare insieme ad altre donne che condividono i tuoi valori.",
+    
+    // Journey Section
+    journeyTitle: "Le Fasi del Tuo Volo",
+    journeyDescription: "Come le api, farai un percorso trasformativo che ti porterà dall'ispirazione all'azione.",
+    journeySubtitle: "Quattro momenti unici per crescere insieme",
+    
+    // New phase content
+    phase1Title: "Ispirati",
+    phase1Description: "Connettiti con altre donne ed esperienze trasformative. Scopri nuovi modi di intraprendere, creare e riconnetterti con te stessa. Attraverso sessioni online settimanali di 3 ore, cresci in uno spazio sicuro e condiviso dove potrai esplorare il tuo potenziale personale e professionale, accompagnata da una comunità che sostiene.",
+    phase1Date: "📅 24 settembre – 10 dicembre 2025",
+    
+    phase2Title: "Convivi",
+    phase2Description: "Vivi un'esperienza immersiva nella natura galiziana, circondata da altre donne come te. Qui si cuoce la trasformazione: tra camminate, conversazioni e progetti condivisi. Una settimana gratuita con tutto incluso in uno dei due spazi: Anceu Coliving o A Loba.",
+    phase2Date: "📅 Dal 4 al 9 novembre 2025",
+    
+    phase3Title: "Fase di solidarietà",
+    phase3Description: "Come le api che si prendono cura del loro alveare, qui si cura la comunità. Ogni partecipante promuove un'azione per restituire al territorio parte dell'affetto ricevuto. Qui fiorisce l'impegno. Sessioni online settimanali di 3 ore per progettare progetti con impatto nel tuo territorio.",
+    phase3Date: "📅 Dal 28 gennaio al 25 febbraio 2026",
+    
+    phase4Title: "Bootcamp internazionale",
+    phase4Description: "Condividi e cresci insieme a donne e facilitatrici di Spagna, Italia e Lituania. Impara in rete, scopri nuove idee e porta il tuo progetto oltre. Qui si aprono le ali. 3 giorni di soggiorno in Lituania nel mese di aprile.",
+    phase4Date: "📅 3 giorni in aprile 2026",
+    
+    // Target Section
+    targetTitle: "Per Chi è Questo Programma?",
+    targetDescription1: "Beautiful Bees è pensato per donne che vivono nelle zone rurali o che sentono connessione con i valori rurali: la cooperazione, la sostenibilità, il rispetto per la natura e la vita in comunità.",
+    targetHighlight: "Se hai voglia di creare, intraprendere o semplicemente riconnetterti con te stessa...",
+    targetConclusion: "Questo è il tuo posto. Qui hai spazio per crescere.",
+    
+    // CTA Section
+    ctaTitle: "Preparati a Volare",
+    ctaDescription: "Unisciti a noi in questa avventura di crescita, connessione e trasformazione. Insieme, possiamo creare qualcosa di bello.",
+    ctaButton: "Voglio unirmi",
+    ctaFree: "🎁 Programma completamente gratuito (24 posti)",
+    ctaSubtext: "La natura ci insegna che tutto cresce meglio in comunità",
+    
+    // Footer
+    footerDescription: "Una comunità per donne che vogliono fiorire nelle zone rurali, creando connessioni reali e progetti di impatto.",
+    footerPoweredBy: "Sostenuto da",
+    footerContact: "Contatto",
+    footerEuCredit: "Progetto finanziato da:",
+    footerProgram: "EOI (Escuela de Organización Industrial) e Camera di Commercio di Santiago",
+    footerMoreInfo: "Maggiori informazioni",
+    footerCopyright: "© 2025 Beautiful Bees. Tutti i diritti riservati.",
   },
   lt: {
-    heroTitle: '🌼 Beautiful Bees',
-    heroSubtitle: 'Bendruomenė moterims, kurios nori klestėti kaimo vietovėse',
-    heroDescription: 'Bendra kelionė susijungti su savimi, gamta ir kitomis moterimis, kurios kuria gyvenimą savo kaimuose.',
-    heroButton: '👉 PRISIJUNGTI PRIE SPIEČIAUS',
-    aboutTitle: '🌸 Kas yra Beautiful Bees?',
-    aboutDescription1: 'Beautiful Bees yra Europos patirtis, skirta jaunoms moterims, kurios nori gyventi tikslingai, apsuptos gamtos ir bendruomenės.',
-    aboutHighlight: 'Čia klestėji tu. Ir visi klesti kartu su tavimi.',
-    aboutDescription2: 'Erdvė, kur ugdoma seserystė, įkvėpimas ir meilė teritorijai.',
-    journeyTitle: '🐝 Kelionės Etapai',
-    journeyDescription: 'Kaip bitės, gyvename tinkluose. Maitiname viena kitą. Kuriame ir rūpinamės kartu.',
-    journeySubtitle: 'Tai mūsų skrydžio sezonai:',
-    phase1Title: 'Įkvėpimas',
-    phase1Description: 'Prisijunkite prie žavinčių žmonių ir patirčių. Atraskite naujus būdus kurti, plėtoti ar tiesiog vėl prisijungti prie savęs. Čia užsidega kibirkštis.',
-    phase2Title: 'Coliving Anceu Coliving',
-    phase2Description: 'Išgyvenk paskendimo patirtį Galisijos gamtos širdyje, apsuptas kitų moterų kaip tu. Čia gaminasi transformacija: tarp vaikščiojimų, sąžiningų pokalbių ir bendrų projektų. Saugi erdvė, kur tavo istorija svarbi.',
-    phase3Title: 'Tarptautinis Bootcamp',
-    phase3Description: 'Dalinkis ir augu kartu su moterimis ir facilitatorėmis iš Ispanijos, Italijos ir Lietuvos. Prisijunk internetu su kitomis moterimis, kurios yra bitės tuose šalyse. Mokykis tinkle, prisijunk prie naujų idėjų ir išvesk savo projektą už savo kaimo ribų. Čia atsiveria sparnai.',
-    phase4Title: 'Solidarumo Etapas',
-    phase4Description: 'Kaip bitės, kurios rūpinasi savo avilyje, čia rūpinamasi bendruomene. Kiekviena dalyvė skatina veiklą, kad grąžintų teritorijai dalį gauto meilės. Čia klesti įsipareigojimas.',
-    targetTitle: '👩‍🌾 Kam tai skirta?',
-    targetDescription1: 'Moterims nuo 18 iki 29 metų, kurios nori augti, kurti, dalintis ir pajusti, kad yra kitų galimų kelių.',
-    targetHighlight: 'Jei ilgai klausaisi to vidinio balso, kuris prašo pokyčio…',
-    targetConclusion: 'Šis projektas skirtas tau.',
-    ctaTitle: '🌼 Leisk klestėti savo keliui su Beautiful Bees',
-    ctaDescription: 'Bendruomenė jau ūžia… trūksta tik tavęs.',
-    ctaButton: '👉 NORIU PRISIJUNGTI',
-    ctaSubtext: '✨ Pokytis, kurio ieškai, yra vieno paspaudimo atstumu ✨',
-    ctaFree: '🎁 Visiškai nemokama programa',
-    footerDescription: 'Europos patirtis moterims, kurios nori klestėti kaimo vietovėse.',
-    footerPoweredBy: 'Skatina',
-    footerContact: 'Kontaktai',
-    footerLanguage: 'Kalba:',
-    footerEuCredit: '🇪🇺 Projektas finansuojamas Europos Sąjungos',
-    footerProgram: 'EOI (Pramonės organizavimo mokykla) ir Santiago prekybos rūmai',
-    footerCopyright: '© 2025 Beautiful Bees - Rural Hackers. Sukurta su 💛 kaimo moterims.',
-    footerMoreInfo: 'Daugiau informacijos',
-    moreInfoTitle: 'Daugiau informacijos apie Beautiful Bees',
-    moreInfoIntro: 'Beautiful Bees: Kaimo apdulkintojų programa statoma kaip transformacinė patirtis, kuri suvienija moteris, teritorijas ir žinias gilaus ir kolektyvinio mokymosi procese. Daugiau nei mokymas, tai gyva regeneracijos pasiūlymas: asmeninis, profesionalus ir bendruomenės.',
-    moreInfoPillar1Title: 'Gamtos pagrįstas mąstymas (nature-based thinking)',
-    moreInfoPillar1Description: 'mokytis iš teritorijos ir su teritorija. Suprasti jos ciklus, atsparumą ir bendradarbiavimo formas, kad jas pritaikytume savo gyvybiniams ir profesiniams procesams. Todėl programa vyksta kaime: gamtoje šie mokymai turi daugiausia prasmės ir galios.',
-    moreInfoPillar2Title: 'Į būtį orientuotas mąstymas (being-based thinking)',
-    moreInfoPillar2Description: 'ugdyti sąmonę, pusiausvyrą ir tikslą. Į centrą statyti gerovę, intuiciją, savipažinimą ir klausymąsi, kad vadovautų prasmingai.',
-    moreInfoPillar3Title: 'Ryšiais pagrįstas mąstymas (connecting-based thinking)',
-    moreInfoPillar3Description: 'kurti realius tinklus. Skatinti ryšius tarp moterų, tarp kartų, tarp kaimų. Sujungti pasaulius, profesijas, žinias ir kultūras, kad sukurtume kažką didesnio nei individualumas.',
-    moreInfoConclusion: 'Ši filosofija įgyvendinama kelionėje su trimis etapais: įkvėpimas (Inspiration), bendradarbiavimo coliving ir grįžimas į teritoriją (Give Back). Kiekvienas skirtas palikti pėdsaką dalyviams ir aplinkai.',
-    moreInfoLocation: 'Veikla vyksta dviejuose Galisijos kaimuose: Anceu ir Fornelos de Montes, kurie susipina sujungti tų pačių bičių. Nes todėl mes taip pat esame Kaimo apdulkintojai: bitės, apdulkinančios idėjas, sėjančios ryšius, generuojančios bendruomenę.',
+    // Hero Section
+    heroTitle: "Beautiful Bees",
+    heroSubtitle: "Bendruomenė moterims, kurios nori klestėti",
+    heroDescription: "Bendras kelias atsijungti su savimi, gamta ir kitomis moterimis",
+    heroButton: "Prisijungti prie spiečiaus",
+    
+    // About Section
+    aboutTitle: "Kodėl Beautiful Bees?",
+    aboutDescription1: "Nes bitės yra tobulas bendradarbiavimo, kūrybingumo ir transformacijos simbolis. Kaip jos, kaimo moterys esame apdulkintojos: nešame idėjas, sujungiame žmones ir priverčiame klestėti projektus mūsų teritorijose.",
+    aboutHighlight: "Kartu kuriame bendruomenę. Kartu verčiame viską augti.",
+    aboutDescription2: "Ši programa skirta moterims, kurios nori pradėti verslą, kurti ar tiesiog prisijungti prie savęs. Nesvarbu, ar turite aiškią idėją, ar dar tyrinėjate: čia turite erdvės atrasti, mokytis ir kurti kartu su kitomis moterimis, kurios dalijasi jūsų vertybėmis.",
+    
+    // Journey Section
+    journeyTitle: "Jūsų Skrydžio Fazės",
+    journeyDescription: "Kaip bitės, atliksite transformuojantį kelią, kuris nuves jus nuo įkvėpimo iki veiksmų.",
+    journeySubtitle: "Keturi unikalūs momentai augti kartu",
+    
+    // New phase content
+    phase1Title: "Įkvėpkitės",
+    phase1Description: "Prisijunkite prie kitų moterų ir transformuojančių patirčių. Atraskite naujus būdus pradėti verslą, kurti ir vėl prisijungti prie savęs. Per savaitinius 3 valandų internetinius seansus, augkite saugioje ir bendrojoje erdvėje, kur galėsite tyrinėti savo asmeninį ir profesinį potencialą, lydimi palaikančios bendruomenės.",
+    phase1Date: "📅 Rugsėjo 24 – Gruodžio 10, 2025",
+    
+    phase2Title: "Gyvenkite kartu",
+    phase2Description: "Išgyvenkite įtraukų patyrimą Galisijos gamtos širdyje, apsuptos kitų moterų kaip jūs. Čia verdama transformacija: tarp žygių, pokalbių ir bendrų projektų. Nemokama savaitė su viskuo įskaičiuotu vienoje iš dviejų erdvių: Anceu Coliving arba A Loba.",
+    phase2Date: "📅 Lapkričio 4-9, 2025",
+    
+    phase3Title: "Solidarumo fazė",
+    phase3Description: "Kaip bitės, kurios rūpinasi savo aviliu, čia rūpinamasi bendruomene. Kiekvienas dalyvis skatina veiksmą grąžinti teritorijai dalį gauto meilės. Čia klesti įsipareigojimas. Savaitiniai 3 valandų internetiniai seansai projektuoti su poveikiu jūsų teritorijoje.",
+    phase3Date: "📅 Sausio 28 – Vasario 25, 2026",
+    
+    phase4Title: "Tarptautinis stovyklavimas",
+    phase4Description: "Dalinkitės ir augkite kartu su moterimis ir vedliais iš Ispanijos, Italijos ir Lietuvos. Mokykitės tinkle, atraskite naujas idėjas ir nukėlkite savo projektą toliau. Čia atsiskleidžia sparnai. 3 dienų buvimas Lietuvoje balandžio mėnesį.",
+    phase4Date: "📅 3 dienos balandžio mėnesį 2026",
+    
+    // Target Section
+    targetTitle: "Kam Skirta Ši Programa?",
+    targetDescription1: "Beautiful Bees skirta moterims, kurios gyvena kaimo vietovėse arba jaučia ryšį su kaimo vertybėmis: bendradarbiavimu, tvarumu, gamtos gerbimu ir bendruomenės gyvenimu.",
+    targetHighlight: "Jei norite kurti, pradėti verslą ar tiesiog prisijungti prie savęs...",
+    targetConclusion: "Tai jūsų vieta. Čia turite erdvės augti.",
+    
+    // CTA Section
+    ctaTitle: "Pasiruoškite Skristi",
+    ctaDescription: "Prisijunkite prie mūsų šiame augimo, ryšio ir transformacijos nuotykyje. Kartu galime sukurti kažką gražaus.",
+    ctaButton: "Noriu prisijungti",
+    ctaFree: "🎁 Visiškai nemokama programa (24 vietos)",
+    ctaSubtext: "Gamta moko mus, kad viskas geriau auga bendruomenėje",
+    
+    // Footer
+    footerDescription: "Bendruomenė moterims, kurios nori klestėti kaimo vietovėse, kurdamos tikrus ryšius ir poveikį darančius projektus.",
+    footerPoweredBy: "Remia",
+    footerContact: "Kontaktai",
+    footerEuCredit: "Projektą finansuoja:",
+    footerProgram: "EOI (Escuela de Organización Industrial) ir Santiago prekybos rūmai",
+    footerMoreInfo: "Daugiau informacijos",
+    footerCopyright: "© 2025 Beautiful Bees. Visos teisės saugomos.",
   }
 };
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+
+export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>('gl');
-
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language') as Language;
-    if (savedLanguage && translations[savedLanguage]) {
-      setLanguage(savedLanguage);
-    }
-  }, []);
-
-  const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
-    localStorage.setItem('language', lang);
-  };
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations[typeof language]] || key;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

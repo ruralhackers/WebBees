@@ -18,6 +18,8 @@ const InteractiveButton = forwardRef<HTMLButtonElement, InteractiveButtonProps>(
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       playClickSound();
+      // Redirect to Google Form
+      window.open('https://forms.gle/Bv41k3xLrSwpakQq8', '_blank');
       onClick?.(e);
     };
 

@@ -10,22 +10,26 @@ const JourneySection = () => {
     {
       icon: "🌱",
       titleKey: "phase1Title",
-      descriptionKey: "phase1Description"
+      descriptionKey: "phase1Description",
+      dateKey: "phase1Date"
     },
     {
       icon: "🏡",
       titleKey: "phase2Title",
-      descriptionKey: "phase2Description"
+      descriptionKey: "phase2Description",
+      dateKey: "phase2Date"
     },
     {
       icon: "🌍",
       titleKey: "phase3Title",
-      descriptionKey: "phase3Description"
+      descriptionKey: "phase3Description",
+      dateKey: "phase3Date"
     },
     {
       icon: "💛",
       titleKey: "phase4Title",
-      descriptionKey: "phase4Description"
+      descriptionKey: "phase4Description",
+      dateKey: "phase4Date"
     }
   ];
 
@@ -59,9 +63,12 @@ const JourneySection = () => {
                 <h3 className="text-2xl md:text-3xl font-bold text-sage-800 mb-4 font-playfair">
                   {t(phase.titleKey)}
                 </h3>
-                <p className="text-sage-600 leading-relaxed text-lg">
+                <p className="text-sage-600 leading-relaxed text-lg mb-4">
                   {t(phase.descriptionKey)}
                 </p>
+                <div className="text-sm text-honey-600 font-medium bg-honey-50 px-4 py-2 rounded-lg">
+                  {t(phase.dateKey)}
+                </div>
               </CardContent>
             </InteractiveCard>
           ))}

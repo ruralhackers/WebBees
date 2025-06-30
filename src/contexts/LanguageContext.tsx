@@ -13,7 +13,7 @@ const translations = {
     // Hero Section
     heroTitle: "Beautiful Bees",
     heroSubtitle: "Unha comunidade para mulleres que queren florecer no rural",
-    heroDescription: "Beautiful Bees está pensado para mullere s que viven no rural ou que senten conexión cos valores rurais : a cooperación, a sostibilidade, o respecto pola natureza e a vida en comunidade.",
+    heroDescription: "Beautiful Bees está pensado para mulleres que viven no rural ou que senten conexión cos valores rurais: a cooperación, a sostibilidade, o respecto pola natureza e a vida en comunidade.",
     heroButton: "Unirse ao enxambre",
     
     // About Section
@@ -111,7 +111,7 @@ const translations = {
     ctaTitle: "Prepárate para Volar",
     ctaDescription: "Únete a nosotras en esta aventura de crecimiento, conexión y transformación. Juntas, podemos crear algo hermoso.",
     ctaButton: "Quiero unirme",
-    ctaFree: "🎁 Programa totalmente gratuito (24 plazas)",
+    ctaFree: "🎁 Programa totalmente gratuito (24 plazas) de 18 a 29 anos",
     ctaSubtext: "La naturaleza nos enseña que todo crece mejor en comunidad",
     
     // Footer

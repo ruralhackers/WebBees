@@ -12,15 +12,15 @@ const translations = {
   gl: {
     // Hero Section
     heroTitle: "Beautiful Bees",
-    heroSubtitle: "Unha comunidade para mulleres que queren florecer",
-    heroDescription: "Unha viaxe compartida para reconectar contigo mesma, coa natureza e con outras mulleres",
+    heroSubtitle: "Unha comunidade para mulleres que queren florecer no rural",
+    heroDescription: "Beautiful Bees está pensado para mullere s que viven no rural ou que senten conexión cos valores rurais : a cooperación, a sostibilidade, o respecto pola natureza e a vida en comunidade.",
     heroButton: "Unirse ao enxambre",
     
     // About Section
     aboutTitle: "Por que Beautiful Bees?",
     aboutDescription1: "Porque as abellas son o símbolo perfecto da cooperación, da creatividade e da transformación. Como elas, as mulleres rurais somos polinizadoras: levamos ideas, conectamos persoas e facemos que florezan os proxectos nos nosos territorios.",
     aboutHighlight: "Xuntas, creamos comunidade. Xuntas, facemos que todo medre.",
-    aboutDescription2: "Este programa está deseñado para mulleres que queren emprender, crear ou simplemente reconectar consigo mesmas. Non importa se tes unha idea clara ou se aínda estás explorando: aquí tes espazo para descubrir, aprender e crear xunto a outras mulleres que comparten os teus valores.",
+    aboutDescription2: "Este programa está deseñado para mulleres de 18 a 29 anos que queren emprender, crear ou simplemente reconectar consigo mesmas. Non importa se tes unha idea clara ou se aínda estás explorando: aquí tes espazo para descubrir, aprender e crear xunto a outras mulleres que comparten os teus valores.",
     
     // Journey Section
     journeyTitle: "As Fases do Teu Voo",

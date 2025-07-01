@@ -33,7 +33,7 @@ const translations = {
     phase1Date: "📅 24 de setembro – 10 de decembro de 2025",
     
     phase2Title: "Convive",
-    phase2Description: "Vive unha experiencia inmersiva en plena natureza galega, rodeada doutras mulleres coma ti. Aquí cócese a transformación: entre camiñadas, conversas e proxectos compartidos. Unha semana gratuíta con todo incluído nalgún dos dous espazos: <a href=\"https://www.anceu.com\" target=\"_blank\">Anceu Coliving</a> ou A Loba.",
+    phase2Description: "Vive unha experiencia inmersiva en plena natureza galega, rodeada doutras mulleres coma ti. Aquí cócese a transformación: entre camiñadas, conversas e proxectos compartidos. Unha semana gratuíta con todo incluído nalgún dos dous espazos: Anceu Coliving ou A Loba.",
     phase2Date: "📅 Do 4 ao 9 de novembro de 2025",
 
     
